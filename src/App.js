@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Divider, Button } from 'antd';
+import { Divider, CopyOutlined } from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
 import { Link } from 'react-router-dom';
@@ -66,6 +66,7 @@ const Wallet = () => {
 
 
 
+
   return (
     <>
     <div>
@@ -79,17 +80,13 @@ const Wallet = () => {
         <h1 className='balance'>REMAINING BALANCE</h1>
           <h2 className='balanceNumber'>${remainingBalance}</h2>
           <br />
-          <p>
-          **** **** **** 1234
-          <br />
-
-          {
-            show?"hello":null
-          }
-          <button onClick={()=>setShow(!show)}>SHOW CARD INFORMATION</button>
-          </p>
+            {
+              show && <p className='cardInfo'>{cardNumber}<br />
+              CVC: {cvc} EXP: {expiration}</p>
+            }
+            <button type="button" onClick={() => setShow(!show)}>SHOW/HIDE CARD INFORMATION</button>
       </div>
-      <div className='text'>
+      <div className='text'>  
         <p>Program doesn't accept cards? We can help. <a href="https://www.learnin.com/">Contact us.</a></p>
       </div>
       </div>

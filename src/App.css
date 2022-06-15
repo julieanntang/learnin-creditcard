@@ -31,8 +31,8 @@ button {
   border: none;
   color: #1e90ff;
   font-weight: bold;
-  padding-left: 62px;
-  padding-right: 62px;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-top: 12px;
   padding-bottom: 12px;
   border-radius: 25px;
@@ -61,4 +61,8 @@ button {
 
 .text {
   margin-left: 35px;
+}
+
+.cardInfo {
+  font-size: 20px;
 }

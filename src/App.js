@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Divider } from 'antd';
+import { Divider, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
+
+
 
 
 const App = () => {
@@ -46,12 +48,25 @@ const App = () => {
 
 
   return (
-    <div>
+    <><div>
       <h3>Your Card</h3>
       <p>Use this card to pay for your programs in your plan. Purchases will be visible by your manager.</p>
       <Divider />
-      {loading ? (overviewData) : (<Spinner animation="border" />)}
-    </div>
+    </div><div>
+        <p class="p1">REMAINING BALANCE
+          <br />
+          <h1>${remainingBalance}</h1>
+          <br />
+          **** **** **** 1234
+          <br />
+          <Button type="default" shape="round" size="large">SHOW CARD INFORMATION</Button>
+        </p>
+        {/* {loading ? (overviewData) : (<Spinner animation="border" />)} */}
+      </div></>
+        
+
+
+
   );
 }
 

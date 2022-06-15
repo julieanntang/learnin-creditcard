@@ -1,3 +1,20 @@
 div {
   margin: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.p1 {
+  border-radius: 25px;
+  background: #e83845;
+  padding: 20px;
+  width: 350px;
+  height:220px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+h1 {
+  color: #ffffff;
 }

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Divider, Button } from 'antd';
 import 'antd/dist/antd.css';
@@ -9,7 +8,7 @@ import './App.css';
 
 
 
-const App = () => {
+const Wallet = () => {
 
   const [billingAddress, setBillingAddress] = useState(null);
   const [billingCity, setBillingCity] = useState(null);
@@ -18,10 +17,13 @@ const App = () => {
   const [cardHolder, setCardHolder] = useState(null);
   const [last4, setLast4] = useState(null);
   const [remainingBalance, setRemainingBalance] = useState(null);
+  const [cardNumber, setCardNumber] = useState(null);
+  const [expiration, setExpiration] = useState(null);
+  const [cvc, setCvc] = useState(null);
+  const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const overviewData = [billingAddress, billingCity, billingPostalCode, billingState, cardHolder, last4, remainingBalance]
 
-  const fetchData = async () => {
+  const fetchOverviewData = async () => {
     try {
       const data = await axios
       .get(`https://run.mocky.io/v3/9761bf82-c85e-4435-a97e-20888cec9b9f`)
@@ -41,28 +43,60 @@ const App = () => {
     }
   };
 
+  const fetchInfo = async () => {
+    try {
+      const info = await axios
+      .get(` https://run.mocky.io/v3/d50e1b3b-017b-4f52-abc5-51fdde133048`)
+      .then(res => {
+        console.log(res);
+        setCardNumber(res.data.cardNumber);
+        setExpiration(res.data.expiration);
+        setCvc(res.data.cvc);
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  };
+
   useEffect(() =>  {
-    fetchData()
+    fetchOverviewData();
+    fetchInfo();
   }, []);
 
 
 
   return (
-    <><div>
+    <>
+    <div>
       <h3>Your Card</h3>
       <p>Use this card to pay for your programs in your plan. Purchases will be visible by your manager.</p>
       <Divider />
-    </div><div>
-        <p class="p1">REMAINING BALANCE
+    </div>
+    <div className='bodyContents'>
+    <div className='card'>
+        <h1 className='balance'>REMAINING BALANCE</h1>
+          <h2 className='balanceNumber'>${remainingBalance}</h2>
           <br />
-          <h1>${remainingBalance}</h1>
-          <br />
+          <p>
           **** **** **** 1234
           <br />
-          <Button type="default" shape="round" size="large">SHOW CARD INFORMATION</Button>
-        </p>
-        {/* {loading ? (overviewData) : (<Spinner animation="border" />)} */}
-      </div></>
+
+          {
+            show?"hello":null
+          }
+          <button onClick={()=>setShow(!show)}>SHOW CARD INFORMATION</button>
+          </p>
+      </div>
+      <div className='sideInfo'>
+        <h1 className='sideHeaders'>CARD HOLDER</h1>
+        <p className='sideBody'>{cardHolder}</p>
+        <br />
+        <h2 className='sideHeaders'>BILLING ADDRESS</h2>
+        <p className='sideBody'>{billingAddress}<br />
+        {billingCity}, {billingState} {billingPostalCode}</p>
+      </div>
+      </div>
+      </>
         
 
 
@@ -70,4 +104,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default Wallet;

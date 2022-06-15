@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Divider, CopyOutlined } from 'antd';
+import { Divider } from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
-import { Link } from 'react-router-dom';
 
 
 

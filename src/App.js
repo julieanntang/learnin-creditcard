@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Divider, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -72,7 +73,8 @@ const Wallet = () => {
       <p>Use this card to pay for your programs in your plan. Purchases will be visible by your manager.</p>
       <Divider />
     </div>
-    <div className='bodyContents'>
+    <div className='bodyHorizontal'>
+    <div className='bodyVertical'>
     <div className='card'>
         <h1 className='balance'>REMAINING BALANCE</h1>
           <h2 className='balanceNumber'>${remainingBalance}</h2>
@@ -86,6 +88,10 @@ const Wallet = () => {
           }
           <button onClick={()=>setShow(!show)}>SHOW CARD INFORMATION</button>
           </p>
+      </div>
+      <div className='text'>
+        <p>Program doesn't accept cards? We can help. <a href="https://www.learnin.com/">Contact us.</a></p>
+      </div>
       </div>
       <div className='sideInfo'>
         <h1 className='sideHeaders'>CARD HOLDER</h1>

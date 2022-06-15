@@ -44,7 +44,7 @@ button {
 }
 
 .sideHeaders {
-  margin-top: 10px;
+  margin-top: 30px;
   font-size: 12px;
 
 }
@@ -53,8 +53,12 @@ button {
   font-size: 23px;
 }
 
-.bodyContents {
+.bodyHorizontal {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.text {
+  margin-left: 35px;
 }
